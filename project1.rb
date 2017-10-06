@@ -5,6 +5,8 @@ race = ""
 option_history = ""
 option_counter = 0
 bln_resting = false
+races = {"1": "Elf", "2": "Human", "3": "Dwarf", "4": "Pixie" }
+
 
 #welcome the user to the game
 puts "Welcome to Pineapple Game: You are a pineapple!"
@@ -15,34 +17,24 @@ character = gets.chomp
 #Welcome the user with their name
 puts "\n""Welcome #{character}!, you have now entered a pineapple world of mystery!" "\n"
 #Select a race
-while not race_option.between?(1,4) do
-	puts "\n""Enter a race:"
-	puts "1: Elf"
-	puts "2: Human"
-	puts "3: Dwarf"
-	puts "4: Pixie"
+while not race_option.to_i.between?(1,4) do
+	puts "\n""Enter a race (pick a number):"
+	races.each do |key, value| puts "#{key}:#{value}" end
 	# convert the user input to an integer
-	race_option = gets.chomp.to_i
+	race_option = gets.chomp
 	#check the user input to make sure it is between 1 and 4
-	if not race_option.between?(1,4) then
+	if not race_option.to_i.between?(1,4) then
 		puts "\n""Please enter a number between 1 and 4"
 	end
 end
 
 	#Tell the user what race they selected
-
-puts "\n""You selected the race:"
-case race_option
-	when 1 
-	puts 'Elf' 
-	when 2 
-	puts 'Human' 
-	when 3 
-	puts 'Dwarf' 
- 	when 4 
-	puts 'Pixie'
-end
-
+puts race_option
+puts "\n""You selected the race: ", races[race_option.to_s]
+	puts races[race_option.to_s]
+	
+	puts races.values[0]
+	
 option = ""
 while not option == "exit"  do
 	while bln_resting do
